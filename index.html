@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jogo do carrinho</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- centraliza o jogo na tela-->
+    <div class="game-wrapper">
+        <!--onde o jogo será desenhado -->
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+        <!-- tela de game over -->
+         <div id="gameOver" class="overlay hidden">
+            <p id="scoreText">Pontuação: 0</p>
+            <button id="restartBtn">Reiniciar</button>
+         </div>
+         <!--instruçoes simples visiveis abaixo do canva-->
+         <div class="instructions">
+            <p>Use as setas esquerdas - direita para mover. Evite os carros vermelhos!</p>
+         </div>
+    </div>
+
+    <script src="script.js"></script> <!-- liga o java ao externo -->
+</body>
+</html>
