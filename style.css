@@ -1,35 +1,73 @@
-/* reset simples dop corpor */
+/*Reset simples do corpo*/
 * {
-    box-sizing: border-box; /* faz o padding não aumentar a largura total */
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* corpo da página */
+/*Corpo da pagina*/
 body {
-    height: 100vh; /* altura total da janela */
-    display: flex; /* usamos flex para centralizar */
-    align-items: center; /* centraliza verticalmente */
-    justify-content: center; /* centraliza horizontalmente */
+    height: 100vh; /*Altura total da janela*/
+    display: flex;/*Flex pra centralizar*/
+    align-items: center;
+    justify-content: center;
     background: #e9e9e9;
-    font-family: arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* wrapper do jogo para manter tudo centralizado e organizado */
+/* Wrapper do jogo para manter tudo centralizado e organizado*/
 .game-wrapper {
     text-align: center;
-    position: relative; /* para posicionar o overlay de game over */
-    background: #bfbfbf; /* caixa de fundo levemnete mais escura */
-    padding: 12px; /* espaçamento interno */
-    border-radius: 8px; /* cantos arredondados */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* sobre suave */
+ position: relative;
+ background: #bfbfbf;
+ padding: 12px;
+ border-radius: 8px;
+ box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-/* canvas centralizado */
+/*Canvas centralizado*/
 canvas {
-    display: block; /* remove espaço embaixo do canva*/
-    margin: 0 auto; /* centraliza horizontalmente */
-    
+    display: block;
+    margin: 0 auto;
+    background: #9e9e9e;
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 4px rgba(255,255,255,0.03);
 }
-...
 
+
+.instructions {
+    margin-top: 8px;
+    color: #222;
+    font-size: 14px;
+}
+
+
+.overLay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    border-radius: 8px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+/* Estilo do botão de reiniciar */
+#restartBtn {
+    margin-top: 12px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}

@@ -105,5 +105,36 @@ function resetGame() {
             score += 10; //pontuação por desviar
             continue; //pule para o proximo obstaculo
         }
+
+        // checa a colisão com o jogador
+        if (isColliding(player, obs)) {
+            //se colidiu, termina o jogo
+            endGame();
+            return; //sai da função update
+        }
+    }
+
+    // pontuação baseada no tempo (frames)
+    frameCount++;
+    if (frameCount % 60 === 0) {
+        // a cada + ou - 60 aprox 1 segundo, aumenta um ponto extra
+        score += 1;
     }
  }
+
+// função para desenhar o jogador no canvas
+function drawPlayer() {
+    ctx.fillStyle = player.color; //define cor do carro do jogador
+    //desenha o retangulo que representa o carro
+    ctx.fillRect(player.x, player.y, player.width, player.heigth);
+    //desenha "janelas" do carro(detalhe simples)
+    ctx.fillStyle = '#rgba(255, 255, 255, 0.25)';
+    ctx.fillRect(player.x + 6, player.y + 12, player.width - 12, 18);
+}
+
+//função para desenhar obstaculos
+function drawObstacles() {
+    for (const obs of obstacles) {
+        
+    }
+}
