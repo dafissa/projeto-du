@@ -65,5 +65,45 @@ function resetGame() {
         a.x < b.x + b.width &&
         a.x + a.width > b.x &&
         a.y < b.y + b.heigth &&
-    )
+        a.y + a.heigth > b.y
+    );
+ }
+
+ // função para atulizar lógica do jogo em cada frame
+ function update() {
+    if (isRunning) return; //se o jogo acabou não atualiza
+
+    // movimenta jogador conforme teclas pressionafas
+    if (leftPressed) {
+        player.x -= player.speed; //move para esquerda
+    }
+    if (rightPressed) {
+        player.x += player.speed; //mpve opara a direita
+    }
+
+    // mantém o jogador dentrop dos limites do canvas
+    if (player.x < 0) player.x = 0;
+    if (player.x + player.width > gameWidth) player.x = gameWidth - player.width;
+
+    // gera obstaculos periodicamente
+    obstacleSpawnTimer++;
+    if (obstacleSpawnTimer > obstacleSpawnInterval) {
+        obstacles.push(createObstacle()); //add novo obstaculo
+        obstacleSpawnTimer = 0; //reseta temporizador
+        // redus ligeiramente o intervalo para aumnetar dificuldades com o tempo
+        if (obstacleSpawnInterval > 45) obstacleSpawnInterval -= 1;
+    } 
+
+    //atualiza obstaculos posição e checa colisao
+    for (let i = obstacle.length - 1; i >= 0; i--) {
+        const obs = obstacles[i];
+        obs.y += obs.speed; // move obstaculo para baixo
+
+        // se o obstaculo saiu da tela, remove e aumenta pontuaçao
+        if (obs.y > gameHeight) {
+            obstacles.splice(i, 1); //remove o obstaculo do array
+            score += 10; //pontuação por desviar
+            continue; //pule para o proximo obstaculo
+        }
+    }
  }
