@@ -135,6 +135,10 @@ function drawPlayer() {
 //função para desenhar obstaculos
 function drawObstacles() {
     for (const obs of obstacles) {
-        
+        ctx.fillStyle = obs.color; // cor do obstaculo
+        ctx.fillRect(obs.x, obs.y, obs.width, obs.length); //desenha o retangulo
+        //pewqueno brilho para dar profunidade
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+        ctx.fillRect(obs.x)
     }
 }
