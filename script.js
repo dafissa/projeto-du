@@ -195,3 +195,11 @@ function gameLoop() {
 }
 
 //-- contrioles de teclado --
+//quando a tecla é pressionada
+window.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'Left') {
+        leftPressed = true; // seta esquerda pressionada
+} else if (e.key === 'ArrowRigth' || e.key === 'Right') {
+    rightPressed = true; //seta que a tecla direita está pressionada
+}
+});
