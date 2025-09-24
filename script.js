@@ -176,5 +176,22 @@ function drawBackgroundAndUI() {
 // função que encerra o jogo (mostra game over)
 function endGame() {
     isRunning = false; //para o loop de atualização
-    //atualiza
+    //atualiza o texto do overlay com a pontuação
+    scoreText.textContent = `Pontuação: ${score}`;
+    gamerOverDiv.classList.remove('hidden'); //mostra o overlay de gamer over
 }
+
+//loop principal do jogo (atualiza e desenha)
+function gameLoop() {
+    update(); //atualiza a logica
+    drawBackgroundAndUI() //DESENHA o cenario e ui
+    drawPlayer(); //desenha o jogado0r
+    drawObstacles(); //DESENHA OS obstaculos
+
+    //se o jogo ainda esta rodando, pede o proximo frame
+    if (isRunning) {
+        requestAnimationFrame(gameLoop);
+    }
+}
+
+//-- contrioles de teclado --
