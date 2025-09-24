@@ -142,3 +142,39 @@ function drawObstacles() {
         ctx.fillRect(obs.x)
     }
 }
+
+// função de desenhar a estrada (faixas) e score
+function drawBackgroundAndUI() {
+    //limpa o canvas inteiro com um tom (fundo já definido no cc do canvas)
+    ctx.clearRect(0, 0, gameWidth, gameHeight);
+
+    // desenha faixas laterais (bordas da estrada)
+    ctx.fillStyle = '#3e3e3e';
+    ctx.fillRect(30, 0, gameWidth - 60, gameHeight); //area da estrada
+
+    //desenha linhas centrais pontilhadas da estrada
+    ctx.strokeStyle = '#f5f5f5';
+    ctx.lineWidth = 4;
+    ctx.setLineDash([20, 18]) //traço / espaço
+    ctx.beginPath();
+    ctx.moveTo(gameWidth / 2, 0);
+    ctx.lineTo(gameWidth / 2, gameHeight);
+    ctx.stroke();
+    ctx.setLineDash([]); // reseta dash
+
+    //desenha a borda esquerda a direita (faixa de acostamento)
+    ctx.fillStyle = '#606060';
+    ctx.fillRect(0, 0, 30, gameHeight); //acostamento esquerdo
+    ctx.fillRect(gameWidth - 30, 0, 30, gameHeight); //acostamento direito
+
+    //mostra pontuação no topo
+    ctx.fillStyle = '#fff';
+    ctx.font = '18px Arial';
+    ctx.fillText(`Pontuação: ${score}`, 12, 24);
+}
+
+// função que encerra o jogo (mostra game over)
+function endGame() {
+    isRunning = false; //para o loop de atualização
+    //atualiza
+}
