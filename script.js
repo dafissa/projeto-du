@@ -203,3 +203,35 @@ window.addEventListener('keydown', function (e) {
     rightPressed = true; //seta que a tecla direita está pressionada
 }
 });
+
+//quando a tecla é solta
+window.addEventListener('keyup', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'Left') {
+        leftPressed = false; //libera movimento da esquerda
+    } else if (e.key === 'ArrowRight' || e.key === 'Right') {
+        rightPressed = false; //libera movimento da direita
+    }
+});
+
+//suporte a toque: simples toque em metade squerda/direita do canvas
+canvas.addEventListener('touchstart', function (e) {
+    e.preventDefault(); //evita rolagem da tela
+    const touchX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+    if (touchX < gameWidth / 2) {
+        leftPressed = true; //toque esquerda = move esquerda
+    } else {
+        rightPressed = true; //toque direita = move direita
+    }
+});
+
+//termina toque
+canvas.addEventListener('touched', function (e) {
+    leftPressed = false;
+    rightPressed = false;
+});
+
+//reiniciar quando clicar no botão de reiniciar
+restartBtn.addEventListener('click', function () {
+    resetGame(); //chama função para reiniciar tudo
+});
+
