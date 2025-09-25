@@ -1,5 +1,10 @@
 // script.js
 // seleciona o elemento canvas e obtem o contexto 2d para desenhar
+const canvas = document.getElementById('gameCanvas'); // canvas do jogo
+const ctx = canvas.getContext('2d');
+
+//elemento overlay do game over
+const gameOverDiv = document.getElementById('gameOver');
 
 
 
@@ -22,14 +27,9 @@
 
 
 
-
-
-
-
-
-
-
-
+let leftPressed = false;
+let rightPressed = false;
+let isRunning = false;
 
 
 
@@ -235,3 +235,5 @@ restartBtn.addEventListener('click', function () {
     resetGame(); //chama função para reiniciar tudo
 });
 
+//inicia o jogo na primeira carga
+requestAnimationFrame(gameLoop);
