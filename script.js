@@ -5,28 +5,29 @@ const ctx = canvas.getContext('2d');
 
 //elemento overlay do game over
 const gameOverDiv = document.getElementById('gameOver');
+const scoreText = document.getElementById('scoreText'); //mostra scrore
+const restartBtn = document.getElementById('restartBtn');
 
+//config do jogo
+const gameWidth = canvas.width; //largura do canvas
+const gameHeight = canvas.heigth
 
+//propriedades dop jogador
+const player = {
+    width: 40,
+    heigth: 70, //altura do carro
+    x: (gameWidth / 2) - 20, //posiçãp x inicial
+    y: gameHeight - 90,
+    speed: 5, //velocidade do movimento lateral
+    color: '#2619b5ff' //cor do carro
+};
 
+//array que contem os obstaculos
+let obstacle = [];
+let obstacleSpawnTimer = 0;
+let obstacleSpawnInterval = 90; //intervalo entre os obstaculos (frames)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//variante do cobtrole do jogo
 let leftPressed = false;
 let rightPressed = false;
 let isRunning = false;
